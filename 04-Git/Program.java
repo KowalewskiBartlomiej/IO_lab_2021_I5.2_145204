@@ -3,3 +3,4 @@ public class Helloo {
 	 //wypisuje Helloo Worldddd
     System.out.print("Helloo Worldddd");
   }
+}
