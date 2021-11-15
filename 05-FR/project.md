@@ -51,14 +51,12 @@ Osoba chcąca zakupić produkt na aukcji.
 [Sprzedający](#ac1):
 * [UC1](#uc1): Wystawienie produktu na aukcję
 * [UC1](#uc1): Podanie danych produktu oraz jego ceny wywoławczej
-* [UC4](#uc4): Zatwierdzenie informacji o zakończeniu licytacji i wyłonieniu zwycięzcy
-* [UC6](#uc6): Przekazanie przedmiotu Kupującemu
+* [UC3](#uc3): Przekazanie przedmiotu Kupującemu
 
 [Kupujący](#ac2)
-* [UC2](#uc1): Dołączenie do akcji
-* [UC3](#uc3): Oferowanie kwot wyższej niż aktualna najwyższa w licytacji
-* [UC4](#uc4): Wygranie/Przegranie licytacji i zatwierdzenie informacji o tym fakcie
-* [UC5](#uc5): Przekazanie należności Sprzedającemu
+* [UC2](#uc2): Udział w licytacji
+* [UC3](#uc3): Wygranie/Przegranie licytacji
+* [UC3](#uc3): Przekazanie należności Sprzedającemu
 
 ---
 <a id="uc1"></a>
@@ -87,10 +85,10 @@ Osoba chcąca zakupić produkt na aukcji.
 **Aktorzy:** [Kupujący](#ac2)
 
 **Scenariusz główny:**
-1. [Kupujący](#ac2) zgłasza do systemu chęć wzięcia udziału w licytacji
-2. System prosi o podanie danych produktu i kwoty.
+1. [Kupujący](#ac2) zgłasza do systemu chęć wzięcia udziału w licytacji.
+2. System prosi o podanie danych kupującego i kwoty.
 3. [Kupujący](#ac2) podaje swoje dane i kwotę.
-4. System weryfikuje poprawność danych i kwoty.
+4. System weryfikuje poprawność danych. [BR1](#br1)
 5. System informuje o pomyślnym wzięciu udziału w licytacji.
 
 **Scenariusze alternatywne:** 
@@ -102,77 +100,23 @@ Osoba chcąca zakupić produkt na aukcji.
 ---
 
 <a id="uc3"></a>
-### UC3: Przebijanie ofert przez Kupującego
+### UC3: Zakończenie licytacji
 
-**Aktorzy:** [Kupujący](#ac2)
+**Aktorzy:** [Sprzedający](#ac1), [Kupujący](#ac2)
 
 **Scenariusz główny:**
-1. System wyświetla użytkownika i kwotę, która aktualnie prowadzi w licytacji
-2. [Kupujący](#ac2), który nie prowadzi w licytacji zgłasza do systemu chęć przebicia oferty.
-3. System prosi o podanie nowej kwoty, którą Kupujący chcę przebić aktualną ofertę.
-4. [Kupujący](#ac2) podaję kwotę.
-5. System weryfikuje poprawność podanej kwoty.
-6. System informuje o udanym przebiciu aktualnie najwyższej oferty.
+1. Po zakończeniu czasu trwania licytacji system wyłania zwycięzcę. [BR2](#br2)
+2. System informuje Kupującego, który wygrał licytację o konieczności przekazania należności Sprzedającemu.
+3. [Kupujący](#ac2), który wygrał licytację, przekazuje Sprzedającemu w dowolny, wybrany przez siebie sposób należność.
+4. System informuje Sprzedającego o fakcie przekazania należności przez Kupującego.
+5. [Sprzedający](#ac1) w dowolny, wybrany przez siebie sposób przekazuje produkt Kupującemu.
+6. System informuje Sprzedającego o ostatecznym zakończeniu aukcji i usuwa wszelkie wrażliwe dane.
 
 **Scenariusze alternatywne:** 
 
-5.A. Podana kwota nie spełnia wymagań.
-* 5.A.1. System informuje o błędnym wprowadzeniu danych.
-* 5.A.2. Przejdź do kroku 4.
-
----
-
-<a id="uc4"></a>
-### UC4: Zakończenie licytacji
-
-**Aktorzy:** [Kupujący](#ac2), [Sprzedający](#ac1)
-
-**Scenariusz główny:**
-1. System informuje użytkowników o zbliżającym się zakończeniu aukcji.
-2. Po zakończeniu czasu trwania licytacji, system rozstrzyga licytację i wyłania zwycięzcę. ([BR2](#br2))
-3. System informuje Kupującego, Sprzedawcę o zakończeniu licytacji.
-4. [Kupujący](#ac2) oraz [Sprzedawca](#ac1) zatwierdzają te informację.
-
-**Scenariusze alternatywne:** 
-
-2.A. Podczas licytacji nie złożono żadnych ofert
-* 2.A.1. System informuje o tym fakcie Sprzedającego.
-* 2.A.2. Koniec przypadku użycia.
-
----
-
-<a id="uc5"></a>
-### UC5: Przekazanie należności Sprzedającemu
-
-**Aktorzy:** [Kupujący](#ac2)
-
-**Scenariusz główny:**
-1. System prosi zwycięzce licytacji o przekazanie należności Sprzedającemu.
-2. [Kupujący](#ac2) przekazuje należność w wybrany przez siebie sposób.
-3. System sprawdza poprawność transakcji.
-4. System informuje Kupującego o poprawnym przekazaniu należności.
-
-**Scenariusze alternatywne:** 
-
-3.A. Transakcja nie powiodła się.
-* 3.A.1. System informuje Kupującego o nieudanej transakcji
-* 3.A.2. Przejdź do kroku 2.
-
----
-
-<a id="uc6"></a>
-### UC6: Przekazanie przedmiotu Kupującemu  
-
-**Aktorzy:** [Sprzedający](#ac1)
-
-**Scenariusz główny:**
-1. System informuje Sprzedającego o przekazaniu należności od Kupujacego.
-2. System informuje o o
-
-**Scenariusze alternatywne:** 
-
-1.A. ...
-* 4.A.1. ...
+1.A. Nie wpłynęła żadna oferta w trakcie trwania aukcji.
+* 1.A.1. System informuje Sprzedającego o braku wyłonienia zwycięzcy aukcji.
+* 1.A.2. Koniec przypadku użycia.
 
 ---
 
@@ -202,9 +146,8 @@ Aukcję wygrywa ten z [Kupujący](#ac2)ch, który w momencie jej zakończenia (u
 ## Macierz CRUDL
 
 
-| Przypadek użycia                                  | Aukcja | Produkt | ... |
-| ------------------------------------------------- | ------ | ------- | --- |
-| UC1: Wystawienia produktu na aukcję               |    C   |    C    | ... |
-| ???                                               |  ...   |  ...    | ... |
-
-
+| Przypadek użycia                                  | Aukcja | Produkt |
+| ------------------------------------------------- | ------ | ------- |
+| UC1: Wystawienia produktu na aukcję               |    C   |    C    |
+| UC2: Udział Kupującego w licytacji                |   RU   |    -    |
+| UC3: Zakończenie licytacji                        |    D   |   RUD   |
