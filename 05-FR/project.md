@@ -86,7 +86,7 @@ Osoba chcąca zakupić produkt na aukcji.
 
 **Scenariusz główny:**
 1. [Kupujący](#ac2) zgłasza do systemu chęć wzięcia udziału w licytacji.
-2. System prosi o podanie danych kupującego i kwoty.
+2. System prosi o podanie danych Kupującego i kwoty.
 3. [Kupujący](#ac2) podaje swoje dane i kwotę.
 4. System weryfikuje poprawność danych. [BR1](#br1)
 5. System informuje o pomyślnym wzięciu udziału w licytacji.
