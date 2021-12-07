@@ -1,1 +1,0 @@
-Bartłomiej Kowalewski
