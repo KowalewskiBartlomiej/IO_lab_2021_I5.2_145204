@@ -25,7 +25,7 @@ class FailureOrErrorTest {
         try {
             assertTrue(2 == 3);
         } catch(Throwable t) {
-            System.out.println(t.getStackTrace());
+            t.printStackTrace();
         }
     }
 }

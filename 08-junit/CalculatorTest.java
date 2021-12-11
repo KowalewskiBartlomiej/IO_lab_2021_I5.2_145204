@@ -18,21 +18,21 @@ class CalculatorTest {
 
     @Test
     void test_add() {
-        assertTrue(calculator.add(2,2) == 4);
-        assertTrue(calculator.add(-1,3) == 2);
+        assertEquals(calculator.add(2, 2), 4);
+        assertEquals(calculator.add(-1, 3), 2);
     }
 
     @Test
     void test_multiply() {
-        assertTrue(calculator.multiply(2,2) == 4);
-        assertTrue(calculator.multiply(-1,3) == -3);
+        assertEquals(calculator.multiply(2, 2), 4);
+        assertEquals(calculator.multiply(-1, 3), -3);
     }
 
     @Test
-    void addPositiveNumbers() {
+    void test_addPositiveNumbers() {
         //assertTrue(calculator.addPositiveNumbers(-2, 3) == 1);
         IllegalArgumentException thrown = Assertions.assertThrows(IllegalArgumentException.class, () -> {
-           calculator.addPositiveNumbers(-2,3);
+            calculator.addPositiveNumbers(-2,3);
         });
     }
 }
