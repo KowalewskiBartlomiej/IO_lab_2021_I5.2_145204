@@ -14,4 +14,9 @@ import org.mockito.stubbing.Answer;
 
 public class ExpenseManagerTest {
 
+    @Test
+    public void test_calculateTotal() {
+        ExpenseRepository mock = mock(ExpenseRepository.class);
+        when(mock.getExpenses()).thenReturn([])
+    }
 }
