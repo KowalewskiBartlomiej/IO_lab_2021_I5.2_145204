@@ -6,10 +6,6 @@ import java.util.Collections;
 import java.util.List;
 
 public class MyDatabase implements IFancyDatabase {
-    public List<Object> querryAll() {
-        return Collections.emptyList();
-    }
-
     @Override
     public void connect() {
 
@@ -22,7 +18,7 @@ public class MyDatabase implements IFancyDatabase {
 
     @Override
     public <T> List<T> queryAll() {
-        return null;
+        return Collections.emptyList();
     }
 
     @Override
