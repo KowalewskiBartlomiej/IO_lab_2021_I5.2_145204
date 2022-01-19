@@ -1,0 +1,21 @@
+1. 
+Kod Bazowy:
+	Average 10490
+	Throughput 48.5/min
+
+Usprawnienia:
+- brak obliczania średniej dla wszystkich klientów w każdej iteracji pętli
+- Cache'owanie tego przed obliczeniami
+
+Kod po zmodyfikowaniu
+	Average 238
+	Throughput 6.7/sec
+	
+2. 
+Dla kodu bazowego:
+	Throughput 2.0/sec <- zbyt mała wydajność (120 obecnie - 334 wymagane)
+	
+Przepustowość dla 34 drukarek:
+	Throughput 6.1/sec <- spełnione minimum 334 - obecnie 366
+	
+	
