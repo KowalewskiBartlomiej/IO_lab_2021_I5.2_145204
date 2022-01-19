@@ -5,7 +5,7 @@ Kod Bazowy:
 
 Usprawnienia:
 - brak obliczania średniej dla wszystkich klientów w każdej iteracji pętli
-- Cache'owanie tego przed obliczeniami
+- cache'owanie tego przed obliczeniami
 
 Kod po zmodyfikowaniu
 	Average 238
